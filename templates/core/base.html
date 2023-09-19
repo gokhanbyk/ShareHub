@@ -1,0 +1,31 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ShareHub</title>
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+  </head>
+  <body>
+
+    {% include "core/_messages.html" %}
+    <!-- Navbar -->
+   {% include "core/_navbar.html" %}
+    <!-- Navbar End -->
+
+    {% block content %}
+    
+    {% endblock content %}
+    
+
+    {% include "core/_footer.html" %}
+    <script src="https://kit.fontawesome.com/f478418874.js" crossorigin="anonymous"></script>
+    <script src="{% static "js/bootstrap.bundle.min.js" %}"></script>
+    {% block script %}
+    
+    {% endblock script %}
+  </body>
+</html>

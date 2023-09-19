@@ -1,0 +1,48 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+{% comment %} 
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+            
+            <h1>Login:</h1>
+            <form method='POST'>
+                {% csrf_token %}
+                method belirt
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name='username'>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" name='password'>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+              </form>
+        </div>
+    </div>
+</div> {% endcomment %}
+
+<div id="head">
+  <div id="form" class="mt-4 p-5">
+    <div class="container d-flex flex-column align-items-center justify-content-center my-3">
+        <small>Demo Account:</small>
+        <small class="mb-3">demo@demo.com / demo12345</small>
+        <h3 class="text-center">Log In</h3>
+        <form method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+                {{ field.errors }}
+                <div class="mb-3">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                </div>
+                {% endfor %}
+                <button class='btn btn-dark w-100 mt-3' type="submit">Log In</button>
+        </form>
+    </div>    
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,34 @@
+.op-02 {
+    opacity: 0.2;
+}
+.op-04 {
+    opacity: 0.4;
+}
+.fs-12 {
+    font-size: 12px;
+}
+.fs-14 {
+    font-size: 14px;
+}
+
+.fa-magnifying-glass {
+    position: absolute;
+    top: 11px;
+    left: 5px;
+}
+
+#head {
+    background-image: url(../img/sharehub_landing.JPG);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+    height: 600px;
+}
+
+#form {
+    width: 25%;
+    border: 1px solid black;
+    border-radius: 30px;
+    background-color: #f9f9f9;
+    margin: auto;
+}
