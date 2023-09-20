@@ -46,7 +46,7 @@ def profile_edit_view(request):
             user.save()
             f.save()
             messages.success(request, 'Profiliniz GÜncellendi...')
-            return redirect('user:profile_edit_view')
+            return redirect('home_view')
 
 
     title = 'Profili Düzenle: '
@@ -139,7 +139,7 @@ def register_view(request):
         messages.success(request, f'{user.first_name} sisteme kaydedildiniz..')
         user = authenticate(request, username = email, password = password)
         login(request, user)
-        return redirect('home_view')
+        return redirect('user:profile_edit_view')
 
     context = dict()
     return render(request, 'user/register.html', context)

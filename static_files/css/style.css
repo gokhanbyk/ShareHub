@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
 .op-02 {
     opacity: 0.2;
 }
@@ -71,6 +77,7 @@
     border-top: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
 }
+
 #hero-2 {
     border-bottom: 1px solid lightgray;
 }
@@ -99,4 +106,18 @@
     padding: 0;
     margin: 0;
     height: 400px;
+}
+
+#profile-edit {
+    width: 60%;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    border-radius: 30px;
+}
+
+#profile-edit-page {
+    background-image: url(../img/hero-login.jpeg);
+    padding: 50px;
 }
