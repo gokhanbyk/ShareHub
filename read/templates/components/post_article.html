@@ -19,14 +19,14 @@
             {% if post.user == request.user %}
                 <small>
                     <a class="btn btn-warning" href="{{ post.get_post_edit_url }}">
-                        Düzenle
+                        Edit
                     </a>
                 </small>
             {% endif %}
         </div>
         <hr>
         <ul class="list-inline">
-            <li class="list-inline-item fs-12">Sep 30</li>
+            <li class="list-inline-item fs-12">{{ post.created_at|date:"M d"}}</li>
             <li class="list-inline-item fs-12">
                 {{ post.view_count }}
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eyeglasses" viewBox="0 0 16 16">
