@@ -19,7 +19,7 @@
                 </h2>
             </div>
         </div>
-        <div class="row">
+        <div class="row mb-3">
 
             {% for top_post in top_posts %}
                 {% include "page/components/top_article.html" with count=forloop.counter post=top_post%}
@@ -29,7 +29,6 @@
         </div>
     </section>
     <!-- Trends End -->
-    <hr>
 
     {% include "core/_hero.html" %}
 
