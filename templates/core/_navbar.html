@@ -16,7 +16,7 @@
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-1">
           
           <li class="nav-item">
-              <a class="btn btn-light border rounded-5" aria-current="page" href="{% url "forum_page_view" %}">Forum</a>
+              <a class="btn btn-outline-dark border rounded-5" aria-current="page" href="{% url "forum_page_view" %}">Forum</a>
           </li>
           {% if not request.user.is_authenticated %}                
             <li class="nav-item">
