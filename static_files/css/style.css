@@ -1,12 +1,15 @@
 .op-02 {
     opacity: 0.2;
 }
+
 .op-04 {
     opacity: 0.4;
 }
+
 .fs-12 {
     font-size: 12px;
 }
+
 .fs-14 {
     font-size: 14px;
 }
@@ -24,6 +27,7 @@
     background-position: right;
     height: 600px;
 }
+
 #head-register {
     background-image: url(../img/sharehub_landing.JPG);
     background-repeat: no-repeat;
@@ -31,6 +35,7 @@
     background-position: left;
     height: 525px;
 }
+
 #head-login {
     background-image: url(../img/sharehub_landing.JPG);
     background-repeat: no-repeat;
@@ -48,6 +53,7 @@
     backdrop-filter: blur(20px);
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
 }
+
 #form-register {
     width: 650px;
     height: 500px;
@@ -63,6 +69,10 @@
 #hero {
     background-color: #fcfcfc;
     border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+}
+#hero-2 {
+    border-bottom: 1px solid lightgray;
 }
 
 #hero-article {
@@ -72,4 +82,21 @@
     padding: 0;
     margin: 0;
     height: 500px;
+}
+
+#hero-article-2 img {
+    object-fit: contain;
+    object-position: left;
+    padding: 0;
+    margin: 0;
+    height: 400px;
+}
+
+#hero-article-3 img {
+    object-fit: contain;
+    transform: rotateY(180deg);
+    object-position: left;
+    padding: 0;
+    margin: 0;
+    height: 400px;
 }

@@ -1,10 +1,22 @@
 {% load static %}
-<main id="hero">
-    <article id="hero-article"></article>
-    <div class="d-flex flex-column align-items-center justify-content-center h-100 my-5">
-        <h2>Overcome the Mind's Limits</h2>
-        <h6>Your Gateway to Infinite Possibilities. Join the community and start your journey today.</h6>
-        <a href="{% url "user:register_view" %}" class="btn btn-dark border rounded-5 mt-2 px-3 py-2">Join Us</a>
-    </div>
-    <hr>
+<main>
+    <section id="hero">
+        <article id="hero-article"></article>
+        <div class="d-flex flex-column align-items-center justify-content-center h-100 my-5">
+            <h2>Overcome the Mind's Limits</h2>
+            <h6>Your Gateway to Infinite Possibilities. Join the community and start your journey today.</h6>
+            <a href="{% url "user:register_view" %}" class="btn btn-dark border rounded-5 mt-2 px-3 py-2">Join Us</a>
+        </div>
+    </section>
+
+    <section id="hero-2" class="d-flex justify-content-between">
+        <article id="hero-article-2"><img src="{% static "img/hero-content-2.jpeg" %}" alt=""></article>
+        <div class="d-flex flex-column align-items-center justify-content-center">
+            <h2>Transform Your Intriguing Idea into Reality</h2>
+            <h5>Discover a world of limitless possibilities. </h5>
+            <h6>Your idea, your journey, your community – all at your fingertips. Start now, and make it happen.</h6>
+            <a href="{% url "forum_page_view" %}" class="btn btn-dark border rounded-5 mt-2 px-3 py-2">Start Reading</a>
+        </div>
+        <article id="hero-article-3"><img src="{% static "img/hero-content-3.png" %}" alt=""></article>
+    </section>
 </main>
