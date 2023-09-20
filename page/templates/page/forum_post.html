@@ -1,0 +1,31 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+    <section class="container mt-5">
+        <div class="row">
+            <main class="col-sm-7">
+                {% for post in posts %}
+                    {% include "components/post.html" %}
+                {% endfor %}
+                <!-- Aside -->
+            </main>
+
+            <aside class="col-sm-4 offset-sm-1">
+                <h6 class="my-3">DISCOVER MORE OF WHAT MATTERS TO YOU</h6>
+                <ul class="list-inline mb-3">
+                    {% for category in categories %}
+                        <li class="list-inline-item border p-2 text-muted fs-12 mb-1 rounded">
+                            <a href="{{ category.get_absolute_url }}" class="link-dark">{{ category.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <hr>
+                <ul class="list-inline mt-3">
+                    {% for tag in tags %}
+                        <li class="list-inline-item"><a href="{{ tag.get_absolute_url }}" class="text-decoration-none text-muted fs-14">{{ tag.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </aside>
+        </div>
+    </section>
+{% endblock content %}

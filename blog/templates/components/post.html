@@ -14,7 +14,7 @@
             {{ post.content|safe|truncatewords_html:10 }}
         </span>
         <ul class="list-inline">
-            <li class="list-inline-item fs-12">Sep 30</li>
+            <li class="list-inline-item fs-12">{{ post.created_at|date:"M d"}}</li>
             <li class="list-inline-item fs-12">
                 {{ post.view_count }}
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eyeglasses" viewBox="0 0 16 16">
@@ -45,3 +45,8 @@
         <img src="{{ post.cover_image|thumbnail_url:'thumbnail' }}" alt="" class="w-100 img-thumbnail">
     </div>
 </article>
+
+{% block script %}
+    {% include "comon_components/fav_update.html" %}
+
+{% endblock script %}

@@ -23,6 +23,7 @@ from page.views import *
 urlpatterns = [
     
     path('', home_view, name='home_view'),
+    path('forum/', forum_page_view, name='forum_page_view'),
 
     # User
     path('user/', include('user.urls', namespace='user')),
