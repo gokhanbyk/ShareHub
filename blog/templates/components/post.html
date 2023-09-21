@@ -1,9 +1,15 @@
 {% load thumbnail %}
+{% load static %}
+
 <article class="row mb-3">
     <div class="col-sm-8">
         <div>
             <a href="{{ post.user.profile.get_absolute_url }}" class="text-decoration-none text-muted">
-            <img src="{{ post.user.profile.avatar|thumbnail_url:'avatar' }}" class="rounded-circle" alt="">
+            {% if post.user.profile.avatar|thumbnail_url:'avatar' %}
+                <img src="{{ post.user.profile.avatar|thumbnail_url:'avatar' }}" class="rounded-circle" alt="">
+            {% else %}
+                <img src="{% static "./img/default_user.jpeg" %}" class="rounded-circle" alt="" width="32" height="32">
+            {% endif %}
             <small class="ms-2">{{ post.user.get_full_name }}</small>
             </a>
         </div>

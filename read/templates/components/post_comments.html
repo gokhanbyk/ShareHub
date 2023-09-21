@@ -1,5 +1,5 @@
 {% load thumbnail %}
-
+{% load static %}
 
 <div class="col-sm-8 offset-sm-2">
     <h2 class="mb-3">General Discussions</h2>
@@ -7,7 +7,12 @@
     <div id="form-comment">
         <form method="POST" class="d-flex mb-3">
             {% csrf_token %}
-            <img src="{{ request.user.profile.avatar|thumbnail_url:'avatar' }}" alt="" width="32" height="32" class="rounded-circle m-1">
+            {% if request.user.profile.avatar|thumbnail_url:'avatar' %}
+                <img src="{{ request.user.profile.avatar|thumbnail_url:'avatar' }}" alt="" width="32" height="32" class="rounded-circle m-1">
+            {% else %}
+                <img src="{% static "./img/default_user.jpeg" %}" class="rounded-circle m-1" alt="" width="32" height="32">
+            {% endif %}
+            
             {{ comment_form }}
             <button class="btn btn-dark">Submit</button>
         </form>
@@ -20,7 +25,11 @@
     {% else %}
         {% for comment in post.comments.all %}
         <div>
+            {% if comment.user.profile.avatar|thumbnail_url:'avatar' %}
             <img src="{{ comment.user.profile.avatar|thumbnail_url:'avatar' }}" alt="" width="32" height="32" class="rounded-circle m-1">
+            {% else %}
+            <img src="{% static "./img/default_user.jpeg" %}" class="rounded-circle m-1" alt="" width="32" height="32">
+            {% endif %}
             <strong>
                 {{ comment.user.get_full_name }} -
                 <span class="">

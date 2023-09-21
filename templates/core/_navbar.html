@@ -1,4 +1,5 @@
 {% load thumbnail %}
+{% load static %}
 
 <nav class="navbar navbar-expand-lg bg-light navbar-light p-3 sticky-top">
     <div class="container-fluid">
@@ -29,7 +30,11 @@
             
             <ul class="dropdown text-start mb-0 p-0">
               <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle text-dark" data-bs-toggle="dropdown" aria-expanded="false">
+                {% if request.user.profile.avatar|thumbnail_url:'avatar' %}
                   <img src="{{ request.user.profile.avatar|thumbnail_url:'avatar' }}" alt="" width="32" height="32" class="rounded-circle m-1">
+                {% else %}
+                  <img src="{% static "./img/default_user.jpeg" %}" class="rounded-circle" alt="" width="32" height="32">
+                {% endif %}
                   <span class="text-dark">{{ request.user.first_name }}</span>
               </a>
               <ul class="dropdown-menu text-small dropdown-menu-lg-end dropdown-menu-start">
