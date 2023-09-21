@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import JsonResponse
+from django.core.paginator import Paginator
 from .forms import *
 from .models import *
 import json
@@ -70,6 +71,8 @@ def tag_view(request, tag_slug):
 def category_view(request, category_slug):
     category = get_object_or_404(Category, slug = category_slug)
     posts = BlogPost.objects.filter(category = category)
+
+
     context = dict(
         category = category,
     )

@@ -5,7 +5,7 @@ from django.core.paginator import Paginator
 # Create your views here.
 
 def home_view(request):
-    posts = BlogPost.objects.filter(is_active=True) # .order_by('-created_at')
+    posts = BlogPost.objects.filter(is_active=True)
     top_posts = posts.order_by('-view_count')[:6]
     tags = Tag.objects.filter(is_active=True) 
     categories = Category.objects.filter(is_active=True) 
@@ -18,7 +18,7 @@ def home_view(request):
     return render(request, 'page/home_page.html', context)
 
 def forum_page_view(request):
-    all_posts = BlogPost.objects.filter(is_active=True) # .order_by('-created_at')
+    all_posts = BlogPost.objects.filter(is_active=True)
     tags = Tag.objects.filter(is_active=True) 
     categories = Category.objects.filter(is_active=True) 
 
