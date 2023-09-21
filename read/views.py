@@ -1,6 +1,7 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404, redirect
 from blog.models import *
 from user.models import *
+from blog.forms import CommentForm
 
 # Create your views here.
 
@@ -17,7 +18,23 @@ def post_detail_view(request, user_slug, post_slug):
     post = get_object_or_404(BlogPost, slug = post_slug, is_active=True)
     post.view_count += 1
     post.save()
+
+    comment_form = CommentForm()
+    
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST or None)
+
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.user = request.user
+            comment.post = post
+            comment.save()
+
+            comment_form = CommentForm()
+
+
     context = dict(
         post = post,
+        comment_form = comment_form
     )
     return render(request, 'read/post_detail.html', context)

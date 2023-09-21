@@ -1,0 +1,45 @@
+{% load thumbnail %}
+
+
+<div class="col-sm-8 offset-sm-2">
+    <h2 class="mb-3">General Discussions</h2>
+
+    <div id="form-comment">
+        <form method="POST" class="d-flex mb-3">
+            {% csrf_token %}
+            <img src="{{ request.user.profile.avatar|thumbnail_url:'avatar' }}" alt="" width="32" height="32" class="rounded-circle m-1">
+            {{ comment_form }}
+            <button class="btn btn-dark">Submit</button>
+        </form>
+    </div>
+    <hr>
+
+
+    {% if not post.comments.all %}
+        <p class="fw-bold">No Comments Yet...</p>
+    {% else %}
+        {% for comment in post.comments.all %}
+        <div>
+            <img src="{{ comment.user.profile.avatar|thumbnail_url:'avatar' }}" alt="" width="32" height="32" class="rounded-circle m-1">
+            <strong>
+                {{ comment.user.get_full_name }} -
+                <span class="">
+                    <small>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                        </svg>
+                        {{ comment.created_at }}
+                    </small>
+                </span>
+            </strong>
+            
+            <br>
+           <div class="shadow rounded-2 p-2 mt-1 mb-3">
+                {{ comment.content }}
+           </div>
+        </div>
+        
+        {% endfor %}
+    {% endif %}
+    
+</div>

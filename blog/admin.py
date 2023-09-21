@@ -3,6 +3,8 @@ from .models import *
 
 # Register your models here.
 
+admin.site.register(Comment)
+
 @admin.register(UserPostFav)
 class UserPostFavAdmin(admin.ModelAdmin):
     list_display = [

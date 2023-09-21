@@ -121,3 +121,7 @@
     background-image: url(../img/hero-login.jpeg);
     padding: 50px;
 }
+
+#form-comment form label {
+    display: none;
+}
