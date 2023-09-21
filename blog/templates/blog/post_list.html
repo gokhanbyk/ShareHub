@@ -15,12 +15,26 @@
         </div>
         <div class="col-sm-8 offset-sm-2 mt-5">
             {% if category %}
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url "home_view" %}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{% url "forum_page_view" %}">Forum</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ category.title }}</li>
+                    </ol>
+                </nav>
                 {% with posts=category.blogpost_set.all %}
                     {% for post in posts %}
                         {% include "components/post.html" %}
                     {% endfor %}
                 {% endwith %}
             {% elif tag %}
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url "home_view" %}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{% url "forum_page_view" %}">Forum</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ tag.title }}</li>
+                    </ol>
+                </nav>
                 {% with posts=tag.blogpost_set.all %}
                     {% for post in posts %}
                             {% include "components/post.html" %}
