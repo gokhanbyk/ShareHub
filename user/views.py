@@ -16,7 +16,7 @@ def show_user_fav_view(request):
     
     
     context = dict(
-        title = "Favourites",
+        title = "Favorites",
         favs=BlogPost.objects.filter(id__in=ids, is_active=True)
     )    
 
