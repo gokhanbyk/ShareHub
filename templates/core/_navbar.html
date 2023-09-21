@@ -39,7 +39,7 @@
               </a>
               <ul class="dropdown-menu text-small dropdown-menu-lg-end dropdown-menu-start">
                   <li><a class="dropdown-item" href="{% url "blog:create_blog_post_view" %}">Write</a></li>                     
-                  <li><a class="dropdown-item" href="{{request.user.profile.get_absolute_url}}">Show All Posts</a></li>
+                  <li><a class="dropdown-item" href="{{request.user.profile.get_absolute_url}}">Profile</a></li>
                   <li><a class="dropdown-item" href="{% url "user:profile_edit_view" %}">Edit Profile</a></li>
                   <li><a class="dropdown-item" href="{{ request.user.profile.get_fav_url }}">Favs</a></li>
                   <li><hr class="dropdown-divider"></li>
