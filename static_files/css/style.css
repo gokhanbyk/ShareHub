@@ -125,3 +125,7 @@
 #form-comment form label {
     display: none;
 }
+
+.bi {
+    cursor: pointer;
+}

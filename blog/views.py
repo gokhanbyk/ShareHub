@@ -61,8 +61,11 @@ def create_blog_post_view(request):
 def tag_view(request, tag_slug):
     tag = get_object_or_404(Tag, slug = tag_slug)
     posts = BlogPost.objects.filter(tag = tag)
+    ids = request.user.userpostfav_set.filter(is_deleted=False).values_list('post_id', flat=True)
+    favs=BlogPost.objects.filter(id__in=ids, is_active=True)
     context = dict(
         tag = tag,
+        favs = favs
     )
 
     return render(request, 'blog/post_list.html', context)
@@ -71,10 +74,12 @@ def tag_view(request, tag_slug):
 def category_view(request, category_slug):
     category = get_object_or_404(Category, slug = category_slug)
     posts = BlogPost.objects.filter(category = category)
-
+    ids = request.user.userpostfav_set.filter(is_deleted=False).values_list('post_id', flat=True)
+    favs=BlogPost.objects.filter(id__in=ids, is_active=True)
 
     context = dict(
         category = category,
+        favs = favs
     )
 
     return render(request, 'blog/post_list.html', context)
