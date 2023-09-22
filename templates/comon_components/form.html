@@ -15,12 +15,13 @@
                     {% csrf_token %}
                     {{ form|crispy }}
                     {{ form.media }}
-                    <button type="submit" class="btn btn-dark mt-1">Kaydet</button>
+                    <button type="submit" class="btn btn-dark mt-1 kaydet">Kaydet</button>
                 </form>
             </div>
         </div>
     </div>
 </section>
+
 <script src="{% static "js/tagify.js" %}"></script>
 <script src="{% static "js/tagify.polyfills.min.js" %}"></script>
 
