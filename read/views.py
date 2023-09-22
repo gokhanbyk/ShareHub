@@ -34,21 +34,12 @@ def post_detail_view(request, user_slug, post_slug):
     post.view_count += 1
     post.save()
 
-    if request.user.is_authenticated:
-        comment_form = CommentForm()
-        ids = request.user.userpostfav_set.filter(is_deleted=False).values_list('post_id', flat=True)
-        favs=BlogPost.objects.filter(id__in=ids, is_active=True)
-
-        context = dict(
-        post = post,
-        comment_form = comment_form,
-        favs = favs
-        )
-        return render(request, 'read/post_detail.html', context)
 
 
     comment_form = CommentForm()
     if request.user.is_authenticated:
+        ids = request.user.userpostfav_set.filter(is_deleted=False).values_list('post_id', flat=True)
+        favs=BlogPost.objects.filter(id__in=ids, is_active=True)
     
         if request.method == 'POST':
             comment_form = CommentForm(request.POST or None)
@@ -60,13 +51,16 @@ def post_detail_view(request, user_slug, post_slug):
                 comment.save()
 
                 comment_form = CommentForm()
-    else:
-        messages.warning('You cannot comment without becoming a member.')
-        return redirect('user:login_view')
+        context = dict(
+        post = post,
+        comment_form = comment_form,
+        favs = favs
+        )
+        return render(request, 'read/post_detail.html', context)
+
 
     context = dict(
         post = post,
         comment_form = comment_form,
-        # favs = favs
     )
     return render(request, 'read/post_detail.html', context)
