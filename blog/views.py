@@ -61,11 +61,19 @@ def create_blog_post_view(request):
 def tag_view(request, tag_slug):
     tag = get_object_or_404(Tag, slug = tag_slug)
     posts = BlogPost.objects.filter(tag = tag)
-    ids = request.user.userpostfav_set.filter(is_deleted=False).values_list('post_id', flat=True)
-    favs=BlogPost.objects.filter(id__in=ids, is_active=True)
-    context = dict(
+    if request.user.is_authenticated:
+        ids = request.user.userpostfav_set.filter(is_deleted=False).values_list('post_id', flat=True)
+        favs=BlogPost.objects.filter(id__in=ids, is_active=True)
+
+        context = dict(
         tag = tag,
         favs = favs
+        )
+        return render(request, 'blog/post_list.html', context)
+
+        
+    context = dict(
+        tag = tag,
     )
 
     return render(request, 'blog/post_list.html', context)
@@ -74,15 +82,50 @@ def tag_view(request, tag_slug):
 def category_view(request, category_slug):
     category = get_object_or_404(Category, slug = category_slug)
     posts = BlogPost.objects.filter(category = category)
-    ids = request.user.userpostfav_set.filter(is_deleted=False).values_list('post_id', flat=True)
-    favs=BlogPost.objects.filter(id__in=ids, is_active=True)
+    if request.user.is_authenticated:
+        ids = request.user.userpostfav_set.filter(is_deleted=False).values_list('post_id', flat=True)
+        favs=BlogPost.objects.filter(id__in=ids, is_active=True)
+
+        context = dict(
+        category = category,
+        favs = favs
+        )
+        return render(request, 'blog/post_list.html', context)
 
     context = dict(
         category = category,
-        favs = favs
     )
 
     return render(request, 'blog/post_list.html', context)
+
+def search_view(request):
+    if 'q' in request.GET and request.GET.get('q'):
+
+        if request.user.is_authenticated:
+            ids = request.user.userpostfav_set.filter(is_deleted=False).values_list('post_id', flat=True)
+            favs=BlogPost.objects.filter(id__in=ids, is_active=True)
+            return render(request, 'blog/search.html', {
+                        'q':q,
+                        'posts':posts,
+                        'favs':favs
+            })
+        
+
+        q = request.GET.get('q')
+        
+        categories = Category.objects.filter(title__contains = q)    
+        tags = Tag.objects.filter(title__contains = q)    
+        posts = BlogPost.objects.filter(title__contains = q) or BlogPost.objects.filter(category__in = categories) or BlogPost.objects.filter(tag__in = tags)
+        
+        return render(request, 'blog/search.html', {
+            'q':q,
+            'posts':posts,
+        })
+        
+
+
+    return render(request, 'blog/search.html', {})
+
 
 login_required(login_url='user:login_view')
 def post_edit_view(request, post_slug):

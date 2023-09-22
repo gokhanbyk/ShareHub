@@ -1,0 +1,30 @@
+{% extends "core/base.html" %}
+
+
+{% block content %} 
+{% if q %}
+    <h1 class="text-center mt-3">You searched for {{ q }}</h1>
+    <h5 class="text-center">Here is what we found..</h5>
+    <br>
+    <div class="container">
+    <div class="row justify-content-center">
+        {% for post in posts %}
+            <div class="col-8">
+                {% include "components/post.html" %}
+            </div>
+        {% endfor %}
+    </div>
+    </div>
+
+{% else %}
+    <h1 class="text-center">Hey! You Forgot To Search...</h1>
+
+{% endif %}
+
+{% endblock content %}
+
+
+{% block script %}
+    {% include "comon_components/fav_update.html" %}
+
+{% endblock script %}

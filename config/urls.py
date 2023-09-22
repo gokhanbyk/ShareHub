@@ -19,11 +19,15 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from page.views import *
+from blog.views import search_view
 
 urlpatterns = [
     
     path('', home_view, name='home_view'),
     path('blog/', forum_page_view, name='forum_page_view'),
+
+    # Search:
+    path('search/', search_view, name='search_view'),
 
     # User
     path('user/', include('user.urls', namespace='user')),
