@@ -48,7 +48,7 @@ def create_blog_post_view(request):
                 tag_item.is_active = True
                 tag_item.save()
                 post.tag.add(tag_item)
-            messages.success(request, 'Blog postunuz basariyla kaydedildi..')
+            messages.success(request, 'Your blog post has been successfully saved.')
             return redirect('home_view')
 
     context = dict(
@@ -140,7 +140,7 @@ def post_edit_view(request, post_slug):
     post = get_object_or_404(BlogPost, slug = post_slug)
 
     if not post.user == request.user:
-        messages.warning(request, 'Bu Post Bilgisini Düzenleyemezsiniz!')
+        messages.warning(request, 'You cannot edit this post information.')
         return redirect('home_view')
     
 
@@ -158,7 +158,7 @@ def post_edit_view(request, post_slug):
                 tag_item.is_active = True
                 tag_item.save()
                 f.tag.add(tag_item)
-            messages.success(request, 'Blog Postunuz Basariyla Duzenlendi..')
+            messages.success(request, 'Your blog post has been successfully edited.')
             return redirect('home_view')
 
     context = dict(

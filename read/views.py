@@ -2,6 +2,8 @@ from django.shortcuts import render,get_object_or_404, redirect
 from blog.models import *
 from user.models import *
 from blog.forms import CommentForm
+from django.contrib import messages
+
 
 # Create your views here.
 
@@ -59,8 +61,8 @@ def post_detail_view(request, user_slug, post_slug):
 
                 comment_form = CommentForm()
     else:
-        # add messages.error
-        pass
+        messages.warning('You cannot comment without becoming a member.')
+        return redirect('user:login_view')
 
     context = dict(
         post = post,

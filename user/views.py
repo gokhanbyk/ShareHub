@@ -45,7 +45,7 @@ def profile_edit_view(request):
             user.last_name = form.cleaned_data.get('last_name')
             user.save()
             f.save()
-            messages.success(request, 'Profiliniz GÜncellendi...')
+            messages.success(request, 'Your profile has been updated.')
             return redirect('home_view')
 
 
@@ -90,7 +90,7 @@ def login_view(request):
     })
 
 def logout_view(request):
-    messages.info(request, f'{request.user.username} Oturum Kapatıldı')    
+    messages.info(request, f'{request.user.username} The session has been logged out.')    
     logout(request)
     return redirect('home_view')   
 
@@ -106,23 +106,23 @@ def register_view(request):
         username = post_info.get('instagram')
 
         if len(first_name) < 3 or len(last_name) < 3 or len(email) < 3 or len(password) < 3:
-            messages.warning(request, 'Bilgiler en az 3 karakterden oluşmalı')
+            messages.warning(request, 'Information must be at least 3 characters long.')
             return redirect('user:register_view')
         if email != email_confirm:
-            messages.warning(request, 'Lütfen email bilgisini doğru giriniz')
+            messages.warning(request, 'Please enter the email information correctly.')
             return redirect('user:register_view')
         if password != password_confirm:
-            messages.warning(request, 'Lütfen şifre bilgisini doğru giriniz')
+            messages.warning(request, 'Please enter the password information correctly.')
             return redirect('user:register_view')
         
         user, created = User.objects.get_or_create(username = email) 
         if not created:
             user = authenticate(request, username = email, password = password)
             if user is not None:
-                messages.success(request, 'Daha önce kayit olmuşsunuz.. Ana Sayfaya Yönlendirildiniz..')
+                messages.success(request, '"You have already registered before. You have been redirected to the homepage.')
                 login(request, user)
                 return redirect('home_view')
-            messages.warning(request, f'{email} adresi sistemde kayitli ama login olmadiniz.. Login sayfasina yönlendiriliyorsunuz')
+            messages.warning(request, f'{email} The address is registered in the system, but you are not logged in. You are being redirected to the login page.')
             return redirect('user:login_view')
         user.email = email
         user.first_name = first_name
@@ -136,7 +136,7 @@ def register_view(request):
         user.save()
         profile.save()
 
-        messages.success(request, f'{user.first_name} sisteme kaydedildiniz..')
+        messages.success(request, f'{user.first_name} You have been registered in the system.')
         user = authenticate(request, username = email, password = password)
         login(request, user)
         return redirect('home_view')
