@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.op-02 {
+    opacity: 0.2;
+}
+
+.op-04 {
+    opacity: 0.4;
+}
+
+.fs-12 {
+    font-size: 12px;
+}
+
+.fs-14 {
+    font-size: 14px;
+}
+
+.fa-magnifying-glass {
+    position: absolute;
+    top: 11px;
+    left: 5px;
+}
+
+#head {
+    background-image: url(../img/sharehub_landing.JPG);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+    height: 600px;
+}
+
+#head-register {
+    background-image: url(../img/sharehub_landing.JPG);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left;
+    height: 525px;
+}
+
+#head-login {
+    background-image: url(../img/sharehub_landing.JPG);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+    height: 480px;
+}
+
+#form {
+    width: 25%;
+    border-radius: 30px;
+    margin: auto;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+}
+
+#form input {
+    border-color: black;
+}
+
+#form-register input {
+    border-color: black;
+}
+
+#form-register {
+    width: 650px;
+    height: 500px;
+    margin-left: auto;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    border-radius: 30px;
+    padding: 30px 40px;
+}
+
+#hero {
+    background-color: #fcfcfc;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+}
+
+#hero-2 {
+    border-bottom: 1px solid lightgray;
+}
+
+#hero-article {
+    background-image: url(../img/_.png);
+    background-size: cover;
+    background-position: center;
+    padding: 0;
+    margin: 0;
+    height: 500px;
+}
+
+#hero-article-2 img {
+    object-fit: contain;
+    object-position: left;
+    padding: 0;
+    margin: 0;
+    height: 400px;
+}
+
+#hero-article-3 img {
+    object-fit: contain;
+    transform: rotateY(180deg);
+    object-position: left;
+    padding: 0;
+    margin: 0;
+    height: 400px;
+}
+
+#profile-edit {
+    width: 60%;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    border-radius: 30px;
+}
+
+#profile-edit-page {
+    background-image: url(../img/hero-login.jpeg);
+    padding: 50px;
+}
+
+#form-comment form label {
+    display: none;
+}
+
+.bi {
+    cursor: pointer;
+}
+
+.socials svg {
+    color: black;
+}
+
+@media screen and (max-width: 992px) {
+    #form {
+        width: 50%;
+    }
+    #profile-edit {
+        width: 90%;
+    }
+    #head div {
+        margin-left: 75px;
+    }
+    #hero-2 article{
+        overflow: hidden!important;
+    }
+    #hero-2 div {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 903px) {
+    #head div h1{
+        font-size: 2rem;
+    }
+    #head div h6 {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 812px) {
+    #head div{
+        justify-content: start!important;
+        width: 100%!important;
+        margin-left: 0;
+        margin-top: 30px;
+    }
+    #head div h1{
+        font-size: 1.8rem;
+    }
+    #head div h6 {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    #form {
+        width: 90%;
+    }
+    #profile-edit {
+        width: 100%;
+    }
+    .kaydet {
+        width: 100%;
+    }
+    #hero div h2 {
+        font-size: 1.6rem;
+    }
+    #hero div h6 {
+        font-size: .9rem;
+    }
+    #hero-2 div h2 {
+        font-size: 1.4rem;
+    }
+    #hero-2 div h5 {
+        font-size: 1.1rem;
+    }
+    #hero-2 div h6 {
+        font-size: .8rem;
+    }
+   
+}
+
+@media screen and (max-width: 552px) {
+    #hero div h6 {
+        width: 70%;
+        text-align: center;
+    }
+    #hero-2 div {
+        width: 100%!important;
+    }
+}
+
+@media screen and (max-width: 424px) {
+    #head div h1{
+        font-size: 1.5rem;
+    }
+    #head div h6 {
+        font-size: .7rem;
+    }
+    #hero div h2 {
+        font-size: 1.3rem;
+    }
+    #hero-2 div h2 {
+        font-size: 1.2rem;
+    }
+    #hero-2 div h5 {
+        font-size: .8rem;
+    }
+    #hero-2 div h6 {
+        font-size: .6rem;
+    }
+}
