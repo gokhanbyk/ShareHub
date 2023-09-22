@@ -145,6 +145,12 @@
     #head div {
         margin-left: 75px;
     }
+    #hero-2 article{
+        overflow: hidden!important;
+    }
+    #hero-2 div {
+        text-align: center;
+    }
 }
 
 @media screen and (max-width: 903px) {
@@ -171,7 +177,6 @@
     }
 }
 
-
 @media screen and (max-width: 700px) {
     #form {
         width: 90%;
@@ -182,6 +187,32 @@
     .kaydet {
         width: 100%;
     }
+    #hero div h2 {
+        font-size: 1.6rem;
+    }
+    #hero div h6 {
+        font-size: .9rem;
+    }
+    #hero-2 div h2 {
+        font-size: 1.4rem;
+    }
+    #hero-2 div h5 {
+        font-size: 1.1rem;
+    }
+    #hero-2 div h6 {
+        font-size: .8rem;
+    }
+   
+}
+
+@media screen and (max-width: 552px) {
+    #hero div h6 {
+        width: 70%;
+        text-align: center;
+    }
+    #hero-2 div {
+        width: 100%!important;
+    }
 }
 
 @media screen and (max-width: 424px) {
@@ -190,5 +221,17 @@
     }
     #head div h6 {
         font-size: .7rem;
+    }
+    #hero div h2 {
+        font-size: 1.3rem;
+    }
+    #hero-2 div h2 {
+        font-size: 1.2rem;
+    }
+    #hero-2 div h5 {
+        font-size: .8rem;
+    }
+    #hero-2 div h6 {
+        font-size: .6rem;
     }
 }
