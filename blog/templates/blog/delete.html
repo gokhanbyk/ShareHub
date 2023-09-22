@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+    <form method="POST" class="p-3 text-center">
+        {% csrf_token %}
+            <h4>{{post.title}}</h4>
+            <p>You sure you want to delete this post?</p>
+
+            
+        <input class="btn btn-primary" type="submit" value="Delete">
+        <a class="btn btn-secondary" href="{{ post.get_absolute_url }}">Nevermind</a>
+    </form>
+{% endblock content %}

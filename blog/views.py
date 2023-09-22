@@ -167,3 +167,21 @@ def post_edit_view(request, post_slug):
     )
 
     return render(request, 'comon_components/form.html', context)
+
+
+
+def delete_post(request, post_slug):
+    post = get_object_or_404(BlogPost, slug = post_slug)
+
+    if not post.user == request.user:
+        messages.warning(request, 'You cannot delete this post information.')
+        return redirect('home_view')
+
+    if request.method == 'POST':
+        post.delete()
+        return redirect('home_view')
+    else:
+        return render(request, 'blog/delete.html', {
+            'post': post
+        })
+    

@@ -76,6 +76,14 @@ class BlogPost(CommonModel):
                 'post_slug': self.slug,
             }
         )
+    
+    def get_post_delete_url(self):
+        return reverse(
+            'blog:delete_post_view',
+            kwargs={
+                'post_slug': self.slug,
+            }
+        )
 
     
 class UserPostFav(models.Model):
