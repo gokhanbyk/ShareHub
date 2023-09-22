@@ -4,18 +4,70 @@
 <nav class="navbar navbar-expand-lg bg-light navbar-light p-3 sticky-top">
     <div class="container-fluid">
         <a href="{% url "home_view" %}" class="text-decoration-none text-dark fs-5">ShareHub ⎋</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2"
+          aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <div class="collapse offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbar2Label" aria-modal="true">
+        <div class="offcanvas-header mb-0 border border-bottom">
+          <a href="{% url "home_view" %}" class="text-decoration-none text-dark fs-5">ShareHub ⎋</a>
+          <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 gap-1 pe-3">
+
+            <form action="{% url "search_view" %}" method='GET' class="d-flex mt-2 mb-1 mx-4 ms-auto w-100 position-relative" role="search">
+              <i class="fa-solid fa-magnifying-glass text-dark"></i>
+              <input name='q' class="form-control me-2 border rounded-5 px-4" type="search" placeholder="Search" aria-label="Search">
+            </form>
+            {% if not request.user.is_authenticated %}                
+              <li class="nav-item">
+                  <a class="btn btn-secondary border w-100 rounded-5" aria-current="page" href="{% url "user:login_view" %}">Log In</a>
+              </li>
+              <li class="nav-item">
+                  <a class="btn btn-dark border w-100 rounded-5" aria-current="page" href="{% url "user:register_view" %}">Register</a>
+              </li>
+            {% endif %}
+            <li class="nav-item">
+              <a class="btn btn-outline-dark border w-100 rounded-5" aria-current="page" href="{% url "forum_page_view" %}">Forum</a>
+            </li>
+            {% if request.user.is_authenticated %}
+              <ul class="dropdown text-start mb-0 mt-2 p-0">
+                <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle text-dark" data-bs-toggle="dropdown" aria-expanded="false">
+                  {% if request.user.profile.avatar|thumbnail_url:'avatar' %}
+                    <img src="{{ request.user.profile.avatar|thumbnail_url:'avatar' }}" alt="" width="32" height="32" class="rounded-circle m-1">
+                  {% else %}
+                    <img src="{% static "./img/default_user.jpeg" %}" class="rounded-circle" alt="" width="32" height="32">
+                  {% endif %}
+                    <span class="text-dark">{{ request.user.first_name }}</span>
+                </a>
+                <ul class="dropdown-menu text-small dropdown-menu-lg-end dropdown-menu-start">
+                    <li><a class="dropdown-item" href="{% url "blog:create_blog_post_view" %}">Write</a></li>                     
+                    <li><a class="dropdown-item" href="{{request.user.profile.get_absolute_url}}">Profile</a></li>
+                    <li><a class="dropdown-item" href="{% url "user:profile_edit_view" %}">Edit Profile</a></li>
+                    <li><a class="dropdown-item" href="{{ request.user.profile.get_fav_url }}">Favs</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li class="nav-item">
+                      <a class="dropdown-item" href="{% url "user:logout_view" %}">Logout</a>
+                    </li> 
+                </ul>
+              </ul>
+            {% endif %}
+            
+          </ul>
+        </div>
+      </div>
+
+      <div class="collapse navbar-collapse">
 
         <form action="{% url "search_view" %}" method='GET' class="d-flex mx-4 ms-auto w-50 position-relative" role="search">
-            <i class="fa-solid fa-magnifying-glass text-dark"></i>
-            <input name='q' class="form-control me-2 border rounded-5 px-4" type="search" placeholder="Search" aria-label="Search">
+          <i class="fa-solid fa-magnifying-glass text-dark"></i>
+          <input name='q' class="form-control me-2 border rounded-5 px-4" type="search" placeholder="Search" aria-label="Search">
         </form>
-  
+
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-1">
-          
           <li class="nav-item">
               <a class="btn btn-outline-dark border rounded-5" aria-current="page" href="{% url "forum_page_view" %}">Forum</a>
           </li>
@@ -26,7 +78,7 @@
             <li class="nav-item">
                 <a class="btn btn-dark border rounded-5" aria-current="page" href="{% url "user:register_view" %}">Register</a>
             </li>
-            {% else %}
+          {% else %}
             
             <ul class="dropdown text-start mb-0 p-0">
               <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle text-dark" data-bs-toggle="dropdown" aria-expanded="false">
@@ -50,7 +102,10 @@
             </ul>
           {% endif %}
         </ul>
+
       </div>
+        
+      
     </div>
   </nav>
 
