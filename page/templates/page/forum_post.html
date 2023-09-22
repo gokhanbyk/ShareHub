@@ -3,7 +3,7 @@
 {% block content %}
     <section class="container mt-5">
         <div class="row">
-            <main class="col-sm-7">
+            <main class="col-md-7">
                     {% for post in posts %}
                             {% include "components/post.html" %}
                     {% endfor %}
@@ -32,7 +32,7 @@
                 <!-- Aside -->
             </main>
 
-            <aside class="col-sm-4 offset-sm-1">
+            <aside class="col-md-4 offset-sm-1">
                 <h6 class="my-3">DISCOVER MORE OF WHAT MATTERS TO YOU</h6>
                 <ul class="list-inline mb-3">
                     {% for category in categories %}

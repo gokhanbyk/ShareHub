@@ -21,6 +21,11 @@ def forum_page_view(request):
     all_posts = BlogPost.objects.filter(is_active=True)
     tags = Tag.objects.filter(is_active=True) 
     categories = Category.objects.filter(is_active=True) 
+
+    paginator = Paginator(all_posts, 5)
+
+    page_number = request.GET.get('page')
+    posts = paginator.get_page(page_number)
     
     if request.user.is_authenticated:
         ids = request.user.userpostfav_set.filter(is_deleted=False).values_list('post_id', flat=True)
@@ -34,10 +39,7 @@ def forum_page_view(request):
         )
         return render(request, 'page/forum_post.html', context)
 
-    paginator = Paginator(all_posts, 5)
-
-    page_number = request.GET.get('page')
-    posts = paginator.get_page(page_number)
+    
 
     context = dict(
         tags = tags,

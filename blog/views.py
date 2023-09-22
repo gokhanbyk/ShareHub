@@ -104,6 +104,13 @@ def search_view(request):
         if request.user.is_authenticated:
             ids = request.user.userpostfav_set.filter(is_deleted=False).values_list('post_id', flat=True)
             favs=BlogPost.objects.filter(id__in=ids, is_active=True)
+
+            q = request.GET.get('q')
+        
+            categories = Category.objects.filter(title__contains = q)    
+            tags = Tag.objects.filter(title__contains = q)    
+            posts = BlogPost.objects.filter(title__contains = q) or BlogPost.objects.filter(category__in = categories) or BlogPost.objects.filter(tag__in = tags)
+            
             return render(request, 'blog/search.html', {
                         'q':q,
                         'posts':posts,
