@@ -13,6 +13,7 @@
             form.append('csrfmiddlewaretoken', '{{ csrf_token }}')
 
             axios.post('/blog/fav-update/', form).then(res => console.log(res)).catch(err => console.error(err))
+            location.reload();
         }
         
     }))
